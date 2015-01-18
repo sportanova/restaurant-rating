@@ -6,7 +6,7 @@ var ratingsView = require('./ratingsView.js')
 
 cdb.init = function(dbName) {
   nano.db.create(dbName);
-  var ratingsDB = nano.db.use(dbName);
+  var db = nano.db.use(dbName);
 
   var ratings = [
     {
@@ -35,14 +35,14 @@ cdb.init = function(dbName) {
     }
   ];
 
-  ratingsDB.insert(ratingsView.view, '_design/ratings', function(err, body) {
+  db.insert(ratingsView.view, '_design/ratings', function(err, body) {
     _.each(ratings, function(rating) {
-      ratingsDB.insert(rating, function(err, body) {
+      db.insert(rating, function(err, body) {
         // if (!err) console.log(body)
       });
     });
 
-    ratingsDB.get('_design/ratings/_view/ratings_by_restaurant', function(err, body) {
+    db.get('_design/ratings/_view/ratings_by_restaurant', function(err, body) {
       console.log('err', err)
       if (!err)
         console.log(body);
