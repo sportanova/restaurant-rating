@@ -1,13 +1,24 @@
-console.log('wat')
-
 var App = React.createClass({
+  getInitialState: function() {
+    return {
+      restaurants: []
+    }
+  },
+  componentDidMount: function() {
+    this.getRestaurants()
+  },
   render: function() {
     return (
       <div>
-        hey
+        <RestaurantsList restaurants={this.state.restaurants}/>
       </div>
     );
-  }
+  },
+  getRestaurants: function() {
+    this.setState({
+      restaurants: restaurantsDummyData
+    });
+  },
 })
 
 function Rating() {
