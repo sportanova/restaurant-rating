@@ -8,7 +8,21 @@ var RestaurantsListItem = React.createClass({
 
     return (
       <div>
-        {this.props.restaurant.name} {ambience} {prices} {food} {drinks} {service}
+        {this.props.restaurant.name} 
+        <table>
+        <tr>
+          <td>F</td>
+          <td>P</td>
+          <td>S</td>
+          <td>A</td>
+          <td>D</td>
+        </tr>
+          <td>{food}</td>
+          <td>{prices}</td>
+          <td>{service}</td>
+          <td>{ambience}</td>
+          <td>{drinks}</td>
+        </table>
       </div>
     )
   }

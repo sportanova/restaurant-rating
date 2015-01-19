@@ -10,7 +10,10 @@ var App = React.createClass({
   render: function() {
     return (
       <div>
-        <RestaurantsList restaurants={this.state.restaurants}/>
+        <div className='sidePane'>
+          <Search/>
+          <RestaurantsList restaurants={this.state.restaurants}/>
+        </div>
       </div>
     );
   },
@@ -18,7 +21,7 @@ var App = React.createClass({
     this.setState({
       restaurants: restaurantsDummyData
     });
-  },
+  }
 })
 
 function Rating() {
